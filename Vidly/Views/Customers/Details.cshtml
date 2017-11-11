@@ -12,6 +12,6 @@
 
     @if (Model.DateOfBirth.HasValue)
     {
-        <li>Birthdate: @DateTime.Parse(Model.DateOfBirth.ToString()).ToShortDateString()</li>
+        <li>Birthdate: @Model.DateOfBirth.Value.ToLongDateString()</li>
     }
 </ul>
