@@ -3,32 +3,51 @@
     ViewBag.Title = "Movie Form";
 }
 
-<h2>Movie Details Form</h2>
+<h2>@Model.Title</h2>
 
 
 @using (Html.BeginForm("Save", "Movies"))
 {
+    @Html.ValidationSummary()
+
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.Name)
         @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.Name)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Movie.ReleaseDate, "Release Date")
+        @Html.LabelFor(m => m.Movie.ReleaseDate)
         @Html.TextBoxFor(m => m.Movie.ReleaseDate, "{0:MMMM dd, yyyy}", new { @class = "form-control" }) @*The 0: is required*@
+        @Html.ValidationMessageFor(m => m.Movie.ReleaseDate)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Movie.NumberInStock, "Number In Stock")
+        @Html.LabelFor(m => m.Movie.NumberInStock)
         @Html.TextBoxFor(m => m.Movie.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.NumberInStock)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.GenreId, "Genre")
         @Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.GenreId)
     </div>
 
     
-    @Html.HiddenFor(m => m.Movie.Id)
+    
+    @* This first line of code here below sets the Movie Id property in our hidden field so it is not Null upon submission of a new movie in the form.
+    The alternative of passing a new Movie object to the viewModel in the New action fixes the Id issue, but causes certain fields to default
+    to their original values since they are non nullable types. Upon submission of the form Id cannot be null which is why
+    we set it here. Without this we would get a validation error and not be able to add a new movie. *@
+
+    @Html.Hidden("Movie.Id", (Model.Movie != null) ? Model.Movie.Id : 0) 
+    @Html.HiddenFor(m => m.Movie.Id)                                     
+    @Html.AntiForgeryToken()                                             
     <button type="submit" class="btn btn-primary">Add/Update Movie</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -14,14 +13,14 @@ namespace Vidly.Models
         [Required, StringLength(255)]
         public string Name { get; set; }
 
-        [Min18YearsIfAMember]
+        [Min18YearsIfAMember, Display(Name = "Date of Birth")]
         public DateTime? DateOfBirth { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
 
-        public MembershipType MembershipType { get; set; }
 
-        [DisplayName("Membership")]
+        [Display(Name = "Membership")]
         public Byte MembershipTypeId { get; set; }
+        public MembershipType MembershipType { get; set; }
     }
 }
