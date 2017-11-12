@@ -14,4 +14,7 @@
     {
         <li>Birthdate: @Model.DateOfBirth.Value.ToLongDateString()</li>
     }
+    <li>@Model.Id</li>
 </ul>
+
+<button>@Html.ActionLink("Edit Customer", "Edit", "Customers", new { id = Model.Id }, null)</button>

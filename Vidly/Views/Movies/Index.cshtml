@@ -7,6 +7,8 @@
 
 <h2>Movie List</h2>
 
+<button>@Html.ActionLink("New Movie", "New", "Movies")</button>
+
 @if (Model.Count() < 1)
 {
     <p>We don't have any movies yet.</p>
