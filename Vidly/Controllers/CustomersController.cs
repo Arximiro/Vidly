@@ -101,10 +101,7 @@ namespace Vidly.Controllers
 
         public ActionResult Index() // INDEX
         {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-
-
-            return View(customers);
+            return View();
         }
 
 
