@@ -21,15 +21,17 @@ namespace Vidly.Controllers.Api
 
 
 
-        public IEnumerable<MovieDto> GetMovies()
+        public IHttpActionResult GetMovies()  // GET /api/movies
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var movieDtos = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+
+            return Ok(movieDtos);
         }
 
 
 
 
-        public IHttpActionResult GetMovie(int id)
+        public IHttpActionResult GetMovie(int id)  // GET /api/movies/1
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
 
@@ -42,7 +44,7 @@ namespace Vidly.Controllers.Api
 
 
         [HttpPost]
-        public IHttpActionResult CreateMovie(MovieDto movieDto)
+        public IHttpActionResult CreateMovie(MovieDto movieDto)  // POST /api/movies
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -60,36 +62,38 @@ namespace Vidly.Controllers.Api
 
 
         [HttpPut]
-        public MovieDto UpdateMovie(int id, MovieDto movieDto)
+        public IHttpActionResult UpdateMovie(int id, MovieDto movieDto)  // PUT /api/movies/1
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
 
             if (movieInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             Mapper.Map(movieDto, movieInDb);
 
             _context.SaveChanges();
 
-            return movieDto;
+            return Ok();
         }
 
 
 
 
         [HttpDelete]
-        public void DeleteMovie(int id)
+        public IHttpActionResult DeleteMovie(int id)  // DELETE /api/movies/1
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
 
             if (movieInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             _context.Movies.Remove(movieInDb);
             _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
