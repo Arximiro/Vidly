@@ -101,7 +101,10 @@ namespace Vidly.Controllers
 
         public ActionResult Index() // INDEX
         {
-            return View();
+            if(User.IsInRole("CanManageMovies"))
+                return View();
+
+            return View("ReadOnlyIndex");
         }
 
 
@@ -114,7 +117,10 @@ namespace Vidly.Controllers
             if (customer == null)
                 return HttpNotFound();
 
-            return View(customer);
+            if (User.IsInRole("CanManageMovies"))
+                return View(customer);
+
+            return View("ReadOnlyDetails", customer);
         }
     }
 }

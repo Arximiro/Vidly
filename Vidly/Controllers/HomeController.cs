@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Vidly.Controllers
 {
+    [AllowAnonymous] // This makes all actions and returned views within this controller allowed by users that don't have an account.
     public class HomeController : Controller
     {
         public ActionResult Index()
