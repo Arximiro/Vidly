@@ -25,7 +25,7 @@ namespace Vidly.Controllers
 
 
 
-        [Authorize(Roles = RoleName.CanManageMovies)]  // This attribute prevents a guest user from going to /movies/new on their own for example and being able to create a new movie.
+        [Authorize(Roles = RoleName.Manager)]  // This attribute prevents a guest user from going to /movies/new on their own for example and being able to create a new movie.
         public ActionResult New() // NEW
         {
             var genres = _context.Genres.ToList();
@@ -42,7 +42,7 @@ namespace Vidly.Controllers
 
 
         [HttpPost, ValidateAntiForgeryToken]
-        [Authorize(Roles = RoleName.CanManageMovies)]
+        [Authorize(Roles = RoleName.Manager)]
         public ActionResult Save(Movie movie) // SAVE
         {
             if (!ModelState.IsValid)
@@ -81,7 +81,7 @@ namespace Vidly.Controllers
 
 
 
-        [Authorize(Roles = RoleName.CanManageMovies)]
+        [Authorize(Roles = RoleName.Manager)]
         public ActionResult Edit(int id) // EDIT
         {
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
@@ -103,7 +103,7 @@ namespace Vidly.Controllers
 
         public ActionResult Index() // INDEX
         {
-            if (User.IsInRole(RoleName.CanManageMovies))
+            if (User.IsInRole(RoleName.Manager))
                 return View();
 
             return View("ReadOnlyIndex");
@@ -119,7 +119,7 @@ namespace Vidly.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            if (User.IsInRole(RoleName.CanManageMovies))
+            if (User.IsInRole(RoleName.Manager))
                 return View(movie);
 
             return View("ReadOnlyDetails", movie);

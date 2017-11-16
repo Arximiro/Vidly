@@ -86,6 +86,7 @@ namespace Vidly.Controllers.Api
 
 
         [HttpDelete]
+        [Authorize(Roles = RoleName.Manager)]
         public IHttpActionResult DeleteCustomer(int id)  // DELETE /api/customers/1
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
