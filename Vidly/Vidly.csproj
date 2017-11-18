@@ -265,9 +265,9 @@
     <Compile Include="Migrations\201711162057153_Add-Rental-DomainModel.Designer.cs">
       <DependentUpon>201711162057153_Add-Rental-DomainModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711162144124_Add-NumberAvailable-to-Novie.cs" />
-    <Compile Include="Migrations\201711162144124_Add-NumberAvailable-to-Novie.Designer.cs">
-      <DependentUpon>201711162144124_Add-NumberAvailable-to-Novie.cs</DependentUpon>
+    <Compile Include="Migrations\201711162144124_Add-NumberAvailable-to-Movie.cs" />
+    <Compile Include="Migrations\201711162144124_Add-NumberAvailable-to-Movie.Designer.cs">
+      <DependentUpon>201711162144124_Add-NumberAvailable-to-Movie.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -396,10 +396,15 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -409,6 +414,8 @@
     </Content>
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -488,6 +495,12 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -573,8 +586,8 @@
     <EmbeddedResource Include="Migrations\201711162057153_Add-Rental-DomainModel.resx">
       <DependentUpon>201711162057153_Add-Rental-DomainModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711162144124_Add-NumberAvailable-to-Novie.resx">
-      <DependentUpon>201711162144124_Add-NumberAvailable-to-Novie.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711162144124_Add-NumberAvailable-to-Movie.resx">
+      <DependentUpon>201711162144124_Add-NumberAvailable-to-Movie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -7,9 +7,9 @@ namespace Vidly.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddNumberAvailabletoNovie : IMigrationMetadata
+    public sealed partial class AddNumberAvailabletoMovie : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddNumberAvailabletoNovie));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddNumberAvailabletoMovie));
         
         string IMigrationMetadata.Id
         {
